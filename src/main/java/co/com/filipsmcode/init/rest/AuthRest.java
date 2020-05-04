@@ -74,5 +74,16 @@ public class AuthRest {
 		
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
+	
+	@RequestMapping(value = "/update",method = RequestMethod.PUT)
+	public ResponseEntity<?> updateUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(myUserDetailsService.updateUser(user));
+	}
+	
+	
+	@RequestMapping(value = "/register",method = RequestMethod.POST)
+	public ResponseEntity<?> registerUser(@RequestBody User user) throws Exception {
+		return ResponseEntity.ok(myUserDetailsService.save(user));
+	}
 
 }
